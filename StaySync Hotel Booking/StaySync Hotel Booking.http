@@ -1,0 +1,6 @@
+@StaySync_Hotel_Booking_HostAddress = http://localhost:5014
+
+GET {{StaySync_Hotel_Booking_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
