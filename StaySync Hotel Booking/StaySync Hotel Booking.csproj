@@ -11,4 +11,19 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StaySync.Application\StaySync.Application.csproj" />
+    <ProjectReference Include="..\StaySync.Infrastructure\StaySync.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\DTOs\Responses\" />
+    <Folder Include="Controllers\DTOs\Requests\" />
+    <Folder Include="Controllers\GraphQl\Mutations\" />
+    <Folder Include="Controllers\GraphQl\Queries\" />
+    <Folder Include="Controllers\Hubs\" />
+    <Folder Include="Controllers\MiddleWare\" />
+    <Folder Include="Controllers\Extentions\" />
+  </ItemGroup>
+
 </Project>
