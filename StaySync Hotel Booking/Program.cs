@@ -1,4 +1,5 @@
-
+using Microsoft.EntityFrameworkCore;
+using StaySync.Infrastructure.Persistence.Context;
 namespace StaySync_Hotel_Booking
 {
     public class Program
@@ -13,6 +14,9 @@ namespace StaySync_Hotel_Booking
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<StaySyncDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 

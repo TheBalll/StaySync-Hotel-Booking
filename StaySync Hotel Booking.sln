@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36623.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaySync Hotel Booking", "StaySync Hotel Booking\StaySync Hotel Booking.csproj", "{CB44C0E4-8CC6-458F-AFBB-42C8174B79D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaySync.API", "StaySync Hotel Booking\StaySync.API.csproj", "{CB44C0E4-8CC6-458F-AFBB-42C8174B79D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaySync.Domain", "StaySync.Domain\StaySync.Domain.csproj", "{CFADF42A-952D-48CE-8022-E9C9D49CCB71}"
 EndProject

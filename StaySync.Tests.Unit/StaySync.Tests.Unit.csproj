@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StaySync Hotel Booking\StaySync Hotel Booking.csproj" />
+    <ProjectReference Include="..\StaySync Hotel Booking\StaySync.API.csproj" />
     <ProjectReference Include="..\StaySync.Application\StaySync.Application.csproj" />
   </ItemGroup>
 
