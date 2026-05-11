@@ -8,6 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Extentions\**" />
+    <Compile Remove="Controllers\GraphQl\**" />
+    <Compile Remove="Controllers\Hubs\**" />
+    <Compile Remove="Controllers\MiddleWare\**" />
+    <Content Remove="Controllers\Extentions\**" />
+    <Content Remove="Controllers\GraphQl\**" />
+    <Content Remove="Controllers\Hubs\**" />
+    <Content Remove="Controllers\MiddleWare\**" />
+    <EmbeddedResource Remove="Controllers\Extentions\**" />
+    <EmbeddedResource Remove="Controllers\GraphQl\**" />
+    <EmbeddedResource Remove="Controllers\Hubs\**" />
+    <EmbeddedResource Remove="Controllers\MiddleWare\**" />
+    <None Remove="Controllers\Extentions\**" />
+    <None Remove="Controllers\GraphQl\**" />
+    <None Remove="Controllers\Hubs\**" />
+    <None Remove="Controllers\MiddleWare\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.26">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,16 +39,6 @@
   <ItemGroup>
     <ProjectReference Include="..\StaySync.Application\StaySync.Application.csproj" />
     <ProjectReference Include="..\StaySync.Infrastructure\StaySync.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\DTOs\Responses\" />
-    <Folder Include="Controllers\DTOs\Requests\" />
-    <Folder Include="Controllers\GraphQl\Mutations\" />
-    <Folder Include="Controllers\GraphQl\Queries\" />
-    <Folder Include="Controllers\Hubs\" />
-    <Folder Include="Controllers\MiddleWare\" />
-    <Folder Include="Controllers\Extentions\" />
   </ItemGroup>
 
 </Project>

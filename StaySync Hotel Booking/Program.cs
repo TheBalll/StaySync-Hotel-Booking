@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using StaySync.Infrastructure.Persistence.Context;
+using StaySync.Application.Mapping;
+using StaySync.Application.Interfaces.Repositories;
+using StaySync.Application.Interfaces.Services;
+using StaySync.Application.Services;
+using StaySync.Infrastructure.Repositories;
 namespace StaySync_Hotel_Booking
 {
     public class Program
@@ -11,12 +16,23 @@ namespace StaySync_Hotel_Booking
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
+            builder.Services.AddScoped<IHotelRepository, HotelRepository>();
+
+            builder.Services.AddScoped<IHotelService, HotelService>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<StaySyncDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(
+            builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<
+            IReservationRepository,
+            ReservationRepository>();
+
+            builder.Services.AddScoped<
+                IReservationService,
+                ReservationService>();
 
             var app = builder.Build();
 
