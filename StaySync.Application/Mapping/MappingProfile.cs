@@ -31,5 +31,12 @@ public class MappingProfile : Profile
                 dest => dest.Status,
                 opt => opt.MapFrom(
                     src => src.Status.ToString()));
+
+
+        CreateMap<CreateGuestRequest, Guest>();
+
+        CreateMap<UpdateGuestRequest, Guest>();
+
+        CreateMap<Guest, GuestResponse>();
     }
 }
