@@ -9,7 +9,7 @@ namespace StaySync.Domain.Entities;
 /// <summary>
 /// Join entity for reservation and services.
 /// </summary>
-public class ReservationService
+public class ReservationServices
 {
     public Guid ReservationId { get; set; }
 

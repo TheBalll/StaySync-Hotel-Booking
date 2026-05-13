@@ -30,5 +30,7 @@ namespace StaySync.Application.DTOs.Requests
         /// </summary>
         [Required]
         public DateTime CheckOutDate { get; set; }
+
+        public List<Guid> ServiceIds { get; set; } = new();
     }
 }

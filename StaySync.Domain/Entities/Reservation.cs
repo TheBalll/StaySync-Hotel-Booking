@@ -30,6 +30,6 @@ public class Reservation : BaseEntity
     public ICollection<Payment> Payments { get; set; }
         = new List<Payment>();
 
-    public ICollection<ReservationService> ReservationServices { get; set; }
-        = new List<ReservationService>();
+    public ICollection<ReservationServices> ReservationServices { get; set; }
+        = new List<ReservationServices>();
 }

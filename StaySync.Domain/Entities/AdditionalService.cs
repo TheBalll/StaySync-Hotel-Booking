@@ -12,10 +12,11 @@ namespace StaySync.Domain.Entities;
 /// </summary>
 public class AdditionalService : BaseEntity
 {
+    public Guid Id { get; set; }
     public string Name { get; set; } = null!;
-
     public decimal Price { get; set; }
+    public bool IsActive { get; set; } = true;
 
-    public ICollection<ReservationService> ReservationServices { get; set; }
-        = new List<ReservationService>();
+    public ICollection<ReservationServices> ReservationServices { get; set; }
+        = new List<ReservationServices>();
 }

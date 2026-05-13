@@ -7,9 +7,9 @@ namespace StaySync.Infrastructure.Persistence.Configurations;
 /// <summary>
 /// Configuration for ReservationService entity.
 /// </summary>
-public class ReservationServiceConfiguration : IEntityTypeConfiguration<ReservationService>
+public class ReservationServiceConfiguration : IEntityTypeConfiguration<ReservationServices>
 {
-    public void Configure(EntityTypeBuilder<ReservationService> builder)
+    public void Configure(EntityTypeBuilder<ReservationServices> builder)
     {
         builder.HasKey(rs => new
         {

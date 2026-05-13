@@ -48,16 +48,25 @@ public class GuestService : IGuestService
 
         return _mapper.Map<GuestResponse>(guest);
     }
-
-    public async Task<GuestResponse>
-        CreateAsync(CreateGuestRequest request)
+    public async Task<GuestResponse> CreateAsync(CreateGuestRequest request)
     {
-        var guest =
-            _mapper.Map<Guest>(request);
+        var guest = _mapper.Map<Guest>(request);
+
+        // РЪЧНО ЗАДАВАНЕ НА ВАЖНИТЕ ПОЛЕТА
+        guest.Id = Guid.NewGuid(); // Генерираме нов ID
+        guest.IsActive = true;     // Новият гост винаги е активен
 
         _context.Guests.Add(guest);
 
-        await _context.SaveChangesAsync();
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            // Ако тук гръмне, ще видим истинската грешка в дебъгера
+            throw new Exception($"Database Error: {ex.InnerException?.Message ?? ex.Message}");
+        }
 
         return _mapper.Map<GuestResponse>(guest);
     }
