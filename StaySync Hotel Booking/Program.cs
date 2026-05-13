@@ -7,7 +7,10 @@ using StaySync.Infrastructure.Persistence.Context;
 using StaySync.Infrastructure.Repositories;
 using StaySync.Infrastructure.Services;
 using StaySync_Hotel_Booking.MiddleWare;
-
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using StaySync.Application.Validators;
+using StaySync_Hotel_Booking.API.GraphQL;
 namespace StaySync_Hotel_Booking
 {
     public class Program
@@ -17,6 +20,27 @@ namespace StaySync_Hotel_Booking
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
+
+            builder.Services.AddControllers()
+            .ConfigureApiBehaviorOptions(options =>
+            {
+              // Това прави така, че ако моделът е невалиден, 
+              // да се връщат точно твоите FluentValidation съобщения.
+             options.SuppressModelStateInvalidFilter = false;
+            });
+
+            builder.Services.AddControllers(options =>
+            {
+                // Изключва автоматичното [Required] за string полета без ?
+                options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
+            })
+              .ConfigureApiBehaviorOptions(options =>
+              {
+               options.SuppressModelStateInvalidFilter = false;
+              });
+
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateGuestRequestValidator>();
 
             builder.Services.AddEndpointsApiExplorer();
 
@@ -32,6 +56,11 @@ namespace StaySync_Hotel_Booking
 
             builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 
+            builder.Services.AddDbContext<StaySyncDbContext>(options =>
+            options.UseSqlServer(
+            builder.Configuration.GetConnectionString("DefaultConnection"),
+            x => x.MigrationsAssembly("StaySync.Infrastructure")));
+
             builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 
             // Services
@@ -45,6 +74,12 @@ namespace StaySync_Hotel_Booking
 
             builder.Services.AddScoped<IAdditionalService, AdditionalServiceImplementation>();
 
+            builder.Services
+           .AddGraphQLServer()
+           .AddQueryType<Query>()
+           .AddFiltering()  // Добави това
+           .AddSorting();
+
             var app = builder.Build();
 
             app.UseSwagger();
@@ -52,6 +87,8 @@ namespace StaySync_Hotel_Booking
             app.UseSwaggerUI();
 
             app.UseMiddleware<ExceptionMiddleware>();
+            
+            app.MapGraphQL();
 
             app.UseHttpsRedirection();
 

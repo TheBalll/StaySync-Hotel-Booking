@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using StaySync.Application.DTOs.Requests;
 
 namespace StaySync.Application.DTOs.Requests
 {
@@ -11,19 +8,11 @@ namespace StaySync.Application.DTOs.Requests
     /// </summary>
     public class CreateGuestRequest
     {
-        /// <summary>
-        /// First name.
-        /// </summary>
-        public string FirstName { get; set; } = null!;
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
 
-        /// <summary>
-        /// Last name.
-        /// </summary>
-        public string LastName { get; set; } = null!;
-
-        /// <summary>
-        /// Email.
-        /// </summary>
-        public string Email { get; set; } = null!;
+        // ТРЯБВА да е string? тук
+        public string? DocumentNumber { get; set; } 
     }
 }
