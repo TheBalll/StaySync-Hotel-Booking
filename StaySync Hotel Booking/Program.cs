@@ -11,6 +11,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using StaySync.Application.Validators;
 using StaySync_Hotel_Booking.API.GraphQL;
+
 namespace StaySync_Hotel_Booking
 {
     public class Program
@@ -73,6 +74,8 @@ namespace StaySync_Hotel_Booking
             builder.Services.AddScoped<IGuestService, GuestService>();
 
             builder.Services.AddScoped<IAdditionalService, AdditionalServiceImplementation>();
+
+            builder.Services.AddScoped<IPaymentService, PaymentService>();
 
             builder.Services
            .AddGraphQLServer()
